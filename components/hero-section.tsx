@@ -98,7 +98,7 @@ const HeroSection = memo(function HeroSection() {
       <CssGridBackground />
       <div className="container px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
-          className="flex flex-col items-center text-center max-w-4xl mx-auto"
+          className="flex flex-col items-center text-center max-w-5xl mx-auto"
           initial="hidden"
           animate={isLoaded ? "visible" : "hidden"}
           variants={containerVariants}
@@ -111,7 +111,7 @@ const HeroSection = memo(function HeroSection() {
           </motion.div>
 
           <motion.h1
-            className="font-bold tracking-tighter mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl max-w-3xl"
+            className="font-bold tracking-tighter mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl max-w-5xl"
             variants={itemVariants}
           >
             A maioria dos médicos confia que agenda cheia é sinal de que tudo está indo bem, até perceber o que poucos
@@ -119,7 +119,7 @@ const HeroSection = memo(function HeroSection() {
           </motion.h1>
 
           <motion.p
-            className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 sm:mb-10 max-w-2xl"
+            className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 sm:mb-10 max-w-3xl"
             variants={itemVariants}
           >
             Descubra o ponto decisivo que existe entre a primeira consulta e o retorno: um intervalo silencioso que está
