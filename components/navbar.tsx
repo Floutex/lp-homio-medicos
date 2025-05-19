@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback, memo } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
@@ -11,8 +11,39 @@ import { ThemeToggle } from "@/components/theme-toggle"
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { scrollToElement } from "@/lib/scroll-utils"
+import { throttle } from "@/lib/performance-utils"
 
-export default function Navbar() {
+// Memoize NavItem for better performance
+const NavItem = memo(function NavItem({
+  item,
+  index,
+  handleNavClick,
+}: {
+  item: { label: string; href: string }
+  index: number
+  handleNavClick: (e: React.MouseEvent<HTMLAnchorElement>, id: string) => void
+}) {
+  return (
+    <motion.div
+      key={index}
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.1 + index * 0.05 }}
+    >
+      <a
+        href={`#${item.href}`}
+        className="text-sm font-medium transition-colors hover:text-[#0387fe] relative group"
+        onClick={(e) => handleNavClick(e, item.href)}
+      >
+        {item.label}
+        <span className="absolute left-0 right-0 bottom-0 h-0.5 bg-[#0387fe] scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
+      </a>
+    </motion.div>
+  )
+})
+
+// Memoize the entire Navbar component
+const Navbar = memo(function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -25,15 +56,12 @@ export default function Navbar() {
     { label: "Agendar", href: "agendar" },
   ]
 
+  // Throttle scroll handler for better performance
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScroll = throttle(() => {
       const offset = window.scrollY
-      if (offset > 50) {
-        setScrolled(true)
-      } else {
-        setScrolled(false)
-      }
-    }
+      setScrolled(offset > 50)
+    }, 100)
 
     window.addEventListener("scroll", handleScroll)
     return () => {
@@ -41,15 +69,16 @@ export default function Navbar() {
     }
   }, [])
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+  // Memoize click handler to prevent recreating on each render
+  const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault()
     scrollToElement(id, 80) // 80px de offset para compensar a navbar
     setIsOpen(false) // Fecha o menu mobile se estiver aberto
-  }
+  }, [])
 
   return (
     <motion.header
-      className={`sticky top-0 z-50 w-full border-b backdrop-blur supports-[backdrop-filter]:bg-background/60 transition-all duration-300 ${
+      className={`sticky top-0 z-50 w-full border-b backdrop-blur supports-[backdrop-filter]:bg-background/60 transition-all duration-300 will-change-transform ${
         scrolled ? "bg-background/95 shadow-sm" : "bg-background/50"
       }`}
       initial={{ y: -100 }}
@@ -64,27 +93,20 @@ export default function Navbar() {
           transition={{ duration: 0.5, delay: 0.1 }}
         >
           <Link href="/" className="flex items-center space-x-2" aria-label="Homio Homepage">
-            <Image src="/images/logo-homio.png" alt="Homio Logo" width={120} height={40} className="h-8 w-auto" />
+            <Image
+              src="/images/logo-homio.png"
+              alt="Homio™ Logo"
+              width={120}
+              height={40}
+              className="h-8 w-auto"
+              priority // Mark as priority for early loading
+            />
           </Link>
         </motion.div>
 
         <nav className="hidden md:flex gap-6" aria-label="Main Navigation">
           {navItems.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 + index * 0.05 }}
-            >
-              <a
-                href={`#${item.href}`}
-                className="text-sm font-medium transition-colors hover:text-[#0387fe] relative group"
-                onClick={(e) => handleNavClick(e, item.href)}
-              >
-                {item.label}
-                <span className="absolute left-0 right-0 bottom-0 h-0.5 bg-[#0387fe] scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
-              </a>
-            </motion.div>
+            <NavItem key={item.href} item={item} index={index} handleNavClick={handleNavClick} />
           ))}
         </nav>
 
@@ -97,6 +119,7 @@ export default function Navbar() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
+            className="will-change-transform"
           >
             <Button
               className="hidden md:flex items-center gap-2 bg-primary hover:bg-primary/90 text-white rounded-xl h-auto transition-all duration-300 hover:shadow-md hover:translate-y-[-2px]"
@@ -151,4 +174,6 @@ export default function Navbar() {
       </div>
     </motion.header>
   )
-}
+})
+
+export default Navbar

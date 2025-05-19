@@ -8,6 +8,21 @@ export function scrollToElement(elementId: string, offset = 0, duration = 800): 
   const element = document.getElementById(elementId)
   if (!element) return
 
+  // Check if browser supports smooth scrolling natively
+  if ("scrollBehavior" in document.documentElement.style) {
+    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+    const offsetPosition = elementPosition - offset
+
+    // Use native smooth scrolling when available
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth",
+    })
+
+    return
+  }
+
+  // Fallback for browsers without native smooth scrolling
   const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
   const offsetPosition = elementPosition - offset
 
@@ -39,4 +54,30 @@ export function scrollToElement(elementId: string, offset = 0, duration = 800): 
   }
 
   requestAnimationFrame(animation)
+}
+
+/**
+ * Checks if an element is in the viewport
+ * @param element - The element to check
+ * @param offset - Optional offset from viewport edges
+ */
+export function isElementInViewport(element: HTMLElement, offset = 0): boolean {
+  const rect = element.getBoundingClientRect()
+
+  return (
+    rect.top <= (window.innerHeight || document.documentElement.clientHeight) + offset &&
+    rect.bottom >= 0 - offset &&
+    rect.left <= (window.innerWidth || document.documentElement.clientWidth) + offset &&
+    rect.right >= 0 - offset
+  )
+}
+
+/**
+ * Get the current scroll position
+ */
+export function getScrollPosition(): { x: number; y: number } {
+  return {
+    x: window.pageXOffset || document.documentElement.scrollLeft,
+    y: window.pageYOffset || document.documentElement.scrollTop,
+  }
 }

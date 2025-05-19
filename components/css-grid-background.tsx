@@ -1,44 +1,45 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { useEffect, useState } from "react"
+import { useEffect, useState, memo } from "react"
+import { throttle } from "@/lib/performance-utils"
 
-export default function CssGridBackground() {
-  const [isLoaded, setIsLoaded] = useState(false)
+// Memoize the component to prevent unnecessary re-renders
+const CssGridBackground = memo(function CssGridBackground() {
+  const [mounted, setMounted] = useState(false)
+  const [scrollPosition, setScrollPosition] = useState(0)
 
   useEffect(() => {
-    setIsLoaded(true)
-  }, [])
+    setMounted(true)
+
+    // Throttle scroll event for better performance
+    const handleScroll = throttle(() => {
+      const position = window.scrollY
+      // Only update state if significant change (reduces renders)
+      if (Math.abs(position - scrollPosition) > 50) {
+        setScrollPosition(position)
+      }
+    }, 100)
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [scrollPosition])
+
+  // Calculate parallax effect based on scroll position
+  const translateY = mounted ? scrollPosition * 0.1 : 0
 
   return (
-    <>
-      {/* Grid overlay that fades from outside to inside */}
-      <motion.div
-        className="absolute inset-0 pointer-events-none z-[-1] grid-background"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isLoaded ? 1 : 0 }}
-        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Apply hardware acceleration and will-change for better performance */}
+      <div
+        className="absolute inset-0 grid-background will-change-transform hardware-accelerated"
         style={{
-          backgroundImage: `linear-gradient(to right, rgba(19, 86, 201, 0.2) 0.5px, transparent 0.5px),
-            linear-gradient(to bottom, rgba(19, 86, 201, 0.2) 0.5px, transparent 0.5px)`,
-          backgroundSize: "80px 80px", // Increased from 40px to 80px
-          mask: "radial-gradient(circle at center, transparent 20%, black 70%)",
-          WebkitMask: "radial-gradient(circle at center, transparent 20%, black 70%)",
+          transform: `translateY(${translateY}px)`,
+          opacity: 0.8, // Slightly reduced opacity for better performance
         }}
-        aria-hidden="true"
       />
-
-      {/* Subtle gradient overlay */}
-      <motion.div
-        className="absolute inset-0 pointer-events-none z-[-2] grid-gradient"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isLoaded ? 1 : 0 }}
-        transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-        style={{
-          background: "radial-gradient(70% 70% at 50% 50%, transparent 0%, rgba(19, 86, 201, 0.05) 100%)",
-        }}
-        aria-hidden="true"
-      />
-    </>
+      <div className="absolute inset-0 grid-gradient" />
+    </div>
   )
-}
+})
+
+export default CssGridBackground
