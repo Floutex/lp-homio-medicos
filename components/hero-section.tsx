@@ -172,7 +172,7 @@ const HeroSection = memo(function HeroSection() {
               onClick={() => scrollToElement("agendar", 80)}
             >
               <span className={isSmallScreen ? "text-sm" : ""}>
-                {isSmallScreen ? "Ver como funciona" : "Quero ver como o Sistema Homio funciona na prática"}
+                {isSmallScreen ? "Ver demonstração" : "Quero ver como o Sistema Homio funciona na prática"}
               </span>
               <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Button>

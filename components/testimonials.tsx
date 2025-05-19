@@ -108,7 +108,7 @@ export default function Testimonials() {
             >
               <Card className="h-full flex flex-col transform-gpu hover:shadow-lg transition-all duration-300 hover:translate-y-[-4px]">
                 <CardContent className="pt-6 flex-grow">
-                  <div className="mb-4 text-4xl text-primary">"</div>
+                  <div className="mb-2 text-4xl text-primary">"</div>
                   <p className="italic text-muted-foreground">{testimonial.quote}</p>
                 </CardContent>
                 <CardFooter className="border-t pt-4">

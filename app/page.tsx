@@ -210,7 +210,10 @@ export default function Home() {
                 size="lg"
                 onClick={() => scrollToElement("agendar", 80)}
               >
-                <span className="text-sm sm:text-base">Quero conhecer a Homio</span>
+                <span className="text-sm sm:text-base">
+                  <span className="hidden sm:inline">Quero conhecer a Homio</span>
+                  <span className="sm:hidden">Agendar demo</span>
+                </span>
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Button>
             </motion.div>

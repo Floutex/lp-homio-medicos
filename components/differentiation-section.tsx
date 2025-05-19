@@ -216,7 +216,10 @@ export default function DifferentiationSection() {
                   onClick={handleScrollToBooking}
                   className="mt-2 bg-primary hover:bg-primary/90 text-white px-4 sm:px-6 py-2 rounded-md flex items-center gap-2 mx-auto w-full sm:w-auto justify-center"
                 >
-                  <span className="text-sm sm:text-base">Quero organizar minha operação com mais leveza</span>
+                  <span className="text-sm sm:text-base">
+                    <span className="hidden sm:inline">Quero organizar minha operação com mais leveza</span>
+                    <span className="sm:hidden">Organizar minha clínica</span>
+                  </span>
                   <ArrowDown className="h-4 w-4" />
                 </Button>
               </motion.div>

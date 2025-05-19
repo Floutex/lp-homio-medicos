@@ -160,7 +160,10 @@ export default function OfferSection() {
                   size="lg"
                   onClick={() => scrollToElement("agendar", 80)}
                 >
-                  <span>Quero conhecer a estrutura que pode destravar minha rotina</span>
+                  <span>
+                    <span className="hidden sm:inline">Quero conhecer a estrutura que pode destravar minha rotina</span>
+                    <span className="sm:hidden">Conhecer a Homio</span>
+                  </span>
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </Button>
               </motion.div>
