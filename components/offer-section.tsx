@@ -85,13 +85,13 @@ export default function OfferSection() {
 
   return (
     <section
-      className="py-20 bg-gradient-to-b from-background to-muted/30 dark:from-background dark:to-muted/10"
+      className="py-12 sm:py-20 bg-gradient-to-b from-background to-muted/30 dark:from-background dark:to-muted/10"
       id="offer"
       ref={sectionRef}
     >
       <div className="container px-4 md:px-6">
         <motion.div
-          className="flex flex-col items-center justify-center space-y-4 text-center mb-12"
+          className="flex flex-col items-center justify-center space-y-3 sm:space-y-4 text-center mb-8 sm:mb-12"
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={containerVariants}
@@ -104,12 +104,15 @@ export default function OfferSection() {
               Nossa Oferta
             </motion.div>
             <motion.h2
-              className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter"
               variants={headerVariants}
             >
               Ao entrar para a Homio, você recebe:
             </motion.h2>
-            <motion.p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl" variants={headerVariants}>
+            <motion.p
+              className="mx-auto max-w-[700px] text-sm sm:text-base md:text-xl text-muted-foreground"
+              variants={headerVariants}
+            >
               Tudo o que você precisa para transformar sua clínica
             </motion.p>
           </div>
@@ -121,29 +124,31 @@ export default function OfferSection() {
           animate={isInView ? "visible" : "hidden"}
           variants={cardVariants}
         >
-          <div className="p-8 md:p-10">
-            <ul className="grid gap-4 md:grid-cols-2">
+          <div className="p-6 sm:p-8 md:p-10">
+            <ul className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2">
               {benefits.map((benefit, index) => (
                 <motion.li key={index} custom={index} variants={itemVariants} className="flex items-start gap-2 group">
-                  <div className="rounded-full bg-primary/10 p-1 mt-1 group-hover:bg-[#0387fe]/20 transition-colors duration-300">
-                    <Check className="h-4 w-4 text-primary group-hover:text-[#0387fe] transition-colors duration-300" />
+                  <div className="rounded-full bg-primary/10 p-1 mt-1 group-hover:bg-[#0387fe]/20 transition-colors duration-300 flex-shrink-0">
+                    <Check className="h-3 w-3 sm:h-4 sm:w-4 text-primary group-hover:text-[#0387fe] transition-colors duration-300" />
                   </div>
-                  <span className="group-hover:text-[#0387fe] transition-colors duration-300">{benefit}</span>
+                  <span className="text-xs sm:text-sm group-hover:text-[#0387fe] transition-colors duration-300">
+                    {benefit}
+                  </span>
                 </motion.li>
               ))}
             </ul>
 
             <motion.div
-              className="mt-10 text-center"
+              className="mt-8 sm:mt-10 text-center"
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : { opacity: 0 }}
               transition={{ duration: 0.7, delay: 0.8 }}
             >
-              <p className="text-lg font-medium mb-2">E tudo isso com o menor custo do mercado:</p>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-base sm:text-lg font-medium mb-2">E tudo isso com o menor custo do mercado:</p>
+              <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6">
                 Você não paga por usuário, não precisa de consultor, e não leva funções pela metade.
               </p>
-              <p className="text-sm text-muted-foreground mb-8">
+              <p className="text-xs sm:text-sm text-muted-foreground mb-6 sm:mb-8">
                 Não tem tempo agora para implantar? A Homio foi feita para quem tem pouco tempo e muita demanda. Com
                 poucos cliques, você já terá lembretes e reativações funcionando.
               </p>
@@ -151,7 +156,7 @@ export default function OfferSection() {
               {/* Novo botão CTA */}
               <motion.div className="flex justify-center" variants={buttonVariants}>
                 <Button
-                  className="group transition-all duration-300 hover:shadow-lg hover:translate-y-[-2px]"
+                  className="group transition-all duration-300 hover:shadow-lg hover:translate-y-[-2px] w-full sm:w-auto text-sm sm:text-base"
                   size="lg"
                   onClick={() => scrollToElement("agendar", 80)}
                 >

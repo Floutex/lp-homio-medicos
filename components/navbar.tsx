@@ -50,7 +50,7 @@ const Navbar = memo(function Navbar() {
   const navItems = [
     { label: "Problema", href: "problem" },
     { label: "Solução", href: "solution" },
-    { label: "Recursos", href: "features" },
+    { label: "Recursos", href: "features", hideOnMobile: true },
     { label: "Depoimentos", href: "testimonials" },
     { label: "Perguntas", href: "faq" },
     { label: "Agendar", href: "agendar" },
@@ -85,7 +85,7 @@ const Navbar = memo(function Navbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="container flex h-16 items-center justify-between">
+      <div className="container flex h-14 sm:h-16 items-center justify-between">
         <motion.div
           className="flex items-center gap-2"
           initial={{ opacity: 0, x: -20 }}
@@ -98,19 +98,22 @@ const Navbar = memo(function Navbar() {
               alt="Homio™ Logo"
               width={120}
               height={40}
-              className="h-8 w-auto"
+              className="h-6 sm:h-8 w-auto"
               priority // Mark as priority for early loading
             />
           </Link>
         </motion.div>
 
-        <nav className="hidden md:flex gap-6" aria-label="Main Navigation">
-          {navItems.map((item, index) => (
-            <NavItem key={item.href} item={item} index={index} handleNavClick={handleNavClick} />
-          ))}
+        <nav className="hidden md:flex gap-4 lg:gap-6" aria-label="Main Navigation">
+          {navItems.map(
+            (item, index) =>
+              !item.hideOnMobile && (
+                <NavItem key={item.href} item={item} index={index} handleNavClick={handleNavClick} />
+              ),
+          )}
         </nav>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-4">
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.3 }}>
             <ThemeToggle />
           </motion.div>
@@ -122,20 +125,20 @@ const Navbar = memo(function Navbar() {
             className="will-change-transform"
           >
             <Button
-              className="hidden md:flex items-center gap-2 bg-primary hover:bg-primary/90 text-white rounded-xl h-auto transition-all duration-300 hover:shadow-md hover:translate-y-[-2px]"
+              className="hidden md:flex items-center gap-2 bg-primary hover:bg-primary/90 text-white rounded-xl h-auto transition-all duration-300 hover:shadow-md hover:translate-y-[-2px] text-sm"
               onClick={(e) => {
                 e.preventDefault()
                 scrollToElement("agendar", 80)
               }}
             >
-              <span className="text-sm font-medium">Quero conhecer</span>
+              <span className="text-xs sm:text-sm font-medium">Quero conhecer</span>
             </Button>
           </motion.div>
 
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild className="md:hidden">
-              <Button variant="outline" size="icon" aria-label="Open Menu">
-                <Menu className="h-5 w-5" />
+              <Button variant="outline" size="icon" aria-label="Open Menu" className="h-8 w-8 sm:h-9 sm:w-9">
+                <Menu className="h-4 w-4 sm:h-5 sm:w-5" />
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
@@ -144,16 +147,19 @@ const Navbar = memo(function Navbar() {
                 <Image src="/images/logo-homio.png" alt="Homio Logo" width={120} height={40} className="h-8 w-auto" />
               </div>
               <nav className="flex flex-col gap-4" aria-label="Mobile Navigation">
-                {navItems.map((item, index) => (
-                  <a
-                    key={index}
-                    href={`#${item.href}`}
-                    className="text-lg font-medium transition-colors hover:text-[#0387fe]"
-                    onClick={(e) => handleNavClick(e, item.href)}
-                  >
-                    {item.label}
-                  </a>
-                ))}
+                {navItems.map(
+                  (item, index) =>
+                    !item.hideOnMobile && (
+                      <a
+                        key={index}
+                        href={`#${item.href}`}
+                        className="text-lg font-medium transition-colors hover:text-[#0387fe]"
+                        onClick={(e) => handleNavClick(e, item.href)}
+                      >
+                        {item.label}
+                      </a>
+                    ),
+                )}
                 <div className="flex items-center gap-4 mt-4">
                   <ThemeToggle />
                   <Button

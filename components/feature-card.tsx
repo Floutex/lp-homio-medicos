@@ -1,76 +1,57 @@
 "use client"
 
-import type { ReactNode } from "react"
+import type React from "react"
+
 import { motion } from "framer-motion"
-import { Card } from "@/components/ui/card"
-import { useTheme } from "next-themes"
-import FrostedGlassIcon from "./frosted-glass-icon"
+import { useInView } from "framer-motion"
+import { useRef } from "react"
 
 interface FeatureCardProps {
-  icon: ReactNode
+  icon: React.ReactNode
   title: string
   description: string
-  accentColor?: string
-  index?: number
+  accentColor: string
+  index: number
 }
 
-export default function FeatureCard({
-  icon,
-  title,
-  description,
-  accentColor = "rgba(120, 120, 255, 0.5)",
-  index = 0,
-}: FeatureCardProps) {
-  const { resolvedTheme } = useTheme()
-  const isDark = resolvedTheme === "dark"
-
-  // Adjust accent color opacity for dark mode
-  const adjustedAccentColor = isDark
-    ? accentColor.replace(/rgba$$(\d+),\s*(\d+),\s*(\d+),\s*[\d.]+$$/, "rgba($1, $2, $3, 0.3)")
-    : accentColor
+export default function FeatureCard({ icon, title, description, accentColor, index }: FeatureCardProps) {
+  const cardRef = useRef(null)
+  const isInView = useInView(cardRef, { once: true, margin: "-50px" })
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
         duration: 0.5,
         ease: [0.22, 1, 0.36, 1],
-        delay: 0.1 + index * 0.05, // Stagger based on index
+        delay: 0.1 + index * 0.05,
       },
     },
   }
 
   return (
-    <motion.div className="relative group h-full" variants={cardVariants}>
-      <Card className="h-full overflow-hidden bg-background/60 backdrop-blur-sm border transition-all duration-300 hover:shadow-lg dark:bg-background/80 hover:translate-y-[-4px] transform-gpu">
-        <div className="p-6 h-full flex flex-col relative z-10">
-          <FrostedGlassIcon icon={icon} color={accentColor} className="mb-4 self-start" />
-
-          <h3 className="text-xl font-bold mb-2">{title}</h3>
-          <p className="text-muted-foreground flex-grow">{description}</p>
-        </div>
-
-        {/* Always visible animated gradient background */}
-        <motion.div
-          className="absolute inset-0 z-0 opacity-20 dark:opacity-30"
-          initial={{ opacity: 0 }}
-          animate={{
-            background: [
-              `radial-gradient(circle at 30% 30%, ${adjustedAccentColor} 0%, transparent 60%)`,
-              `radial-gradient(circle at 70% 70%, ${adjustedAccentColor} 0%, transparent 60%)`,
-            ],
-            opacity: [0.15, 0.25, 0.15],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Number.POSITIVE_INFINITY,
-            repeatType: "reverse",
-            ease: "easeInOut",
-          }}
-        />
-      </Card>
+    <motion.div
+      ref={cardRef}
+      className="group flex flex-col p-6 bg-card rounded-xl border shadow-sm hover:shadow-md transition-all duration-300 h-full"
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      variants={cardVariants}
+      style={{
+        borderColor: "transparent",
+        borderLeftColor: accentColor,
+        borderLeftWidth: "4px",
+      }}
+    >
+      <div
+        className="rounded-full p-2 w-12 h-12 flex items-center justify-center mb-4"
+        style={{ backgroundColor: accentColor + "20" }}
+      >
+        {icon}
+      </div>
+      <h3 className="text-xl font-medium mb-2 group-hover:text-primary transition-colors duration-300">{title}</h3>
+      <p className="text-muted-foreground text-sm">{description}</p>
     </motion.div>
   )
 }

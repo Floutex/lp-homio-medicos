@@ -95,7 +95,7 @@ export default function FeaturesSection() {
   }
 
   return (
-    <section className="py-20 bg-muted/50 dark:bg-muted/10" id="features" ref={sectionRef}>
+    <section className="py-20 bg-muted/50 dark:bg-muted/10 sm:block hidden" id="features" ref={sectionRef}>
       <div className="container px-4 md:px-6">
         <motion.div
           className="flex flex-col items-center justify-center space-y-4 text-center mb-12"

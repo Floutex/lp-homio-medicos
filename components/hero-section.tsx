@@ -111,7 +111,7 @@ const HeroSection = memo(function HeroSection() {
           </motion.div>
 
           <motion.h1
-            className="font-bold tracking-tighter mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl max-w-5xl"
+            className="font-bold tracking-tighter mb-4 sm:mb-6 text-2xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl max-w-5xl"
             variants={itemVariants}
           >
             A maioria dos médicos confia que agenda cheia é sinal de que tudo está indo bem, até perceber o que poucos
@@ -119,21 +119,21 @@ const HeroSection = memo(function HeroSection() {
           </motion.h1>
 
           <motion.p
-            className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 sm:mb-10 max-w-3xl"
+            className="text-sm sm:text-base md:text-xl text-muted-foreground mb-6 sm:mb-10 max-w-3xl"
             variants={itemVariants}
           >
             Descubra o ponto decisivo que existe entre a primeira consulta e o retorno: um intervalo silencioso que está
             drenando os resultados de clínicas em todo o Brasil.
           </motion.p>
 
-          <motion.div className="w-full max-w-3xl mx-auto mb-8 sm:mb-10 will-change-transform" variants={videoVariants}>
+          <motion.div className="w-full max-w-3xl mx-auto mb-6 sm:mb-10 will-change-transform" variants={videoVariants}>
             <div className="relative aspect-video rounded-xl overflow-hidden border shadow-xl transition-all duration-500 hover:shadow-2xl transform-gpu">
               <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent opacity-50 z-10 pointer-events-none"></div>
 
               {/* Video placeholder while loading */}
               {!videoLoaded && (
                 <div className="absolute inset-0 bg-muted/30 animate-pulse flex items-center justify-center">
-                  <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center">
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-primary/20 flex items-center justify-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
@@ -144,7 +144,7 @@ const HeroSection = memo(function HeroSection() {
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className="text-primary"
+                      className="text-primary h-5 w-5 sm:h-6 sm:w-6"
                     >
                       <polygon points="5 3 19 12 5 21 5 3"></polygon>
                     </svg>
@@ -167,7 +167,7 @@ const HeroSection = memo(function HeroSection() {
 
           <motion.div variants={itemVariants} className="will-change-transform">
             <Button
-              className="group transition-all duration-300 hover:shadow-lg hover:translate-y-[-2px]"
+              className="group transition-all duration-300 hover:shadow-lg hover:translate-y-[-2px] w-full sm:w-auto"
               size={isSmallScreen ? "default" : "lg"}
               onClick={() => scrollToElement("agendar", 80)}
             >

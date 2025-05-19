@@ -91,13 +91,11 @@ export default function Home() {
 
   // Optimize progress bar updates
   useEffect(() => {
-    return scrollYProgress.onChange(
-      throttle((latest) => {
-        window.requestAnimationFrame(() => {
-          setScrollProgress(latest)
-        })
-      }, 50),
-    )
+    return scrollYProgress.onChange((latest) => {
+      window.requestAnimationFrame(() => {
+        setScrollProgress(latest)
+      })
+    })
   }, [scrollYProgress])
 
   // Preload critical resources
@@ -181,7 +179,7 @@ export default function Home() {
 
       {/* Final CTA - optimized animations */}
       <motion.section
-        className="py-20 bg-primary/5"
+        className="py-12 sm:py-20 bg-primary/5"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-100px" }}
@@ -195,22 +193,24 @@ export default function Home() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter mb-4 sm:mb-6">
               Se você sente que a rotina da sua clínica poderia ser mais previsível, estruturada e eficiente
             </h2>
-            <p className="text-xl text-muted-foreground mb-10">Essa é a ferramenta certa para você usar.</p>
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-6 sm:mb-10">
+              Essa é a ferramenta certa para você usar.
+            </p>
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
               transition={{ duration: 0.2 }}
-              className="will-change-transform"
+              className="will-change-transform w-full sm:w-auto"
             >
               <Button
-                className="group transition-all duration-300 hover:shadow-lg hover:translate-y-[-2px]"
+                className="group transition-all duration-300 hover:shadow-lg hover:translate-y-[-2px] w-full sm:w-auto"
                 size="lg"
                 onClick={() => scrollToElement("agendar", 80)}
               >
-                <span>Quero conhecer a Homio</span>
+                <span className="text-sm sm:text-base">Quero conhecer a Homio</span>
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Button>
             </motion.div>
@@ -223,7 +223,7 @@ export default function Home() {
       {/* Floating back to top button - optimized with conditional rendering */}
       {scrollProgress > 0.1 && (
         <motion.button
-          className="fixed bottom-8 right-8 p-3 rounded-full bg-primary text-white shadow-lg z-40 hover:bg-primary/90 transition-all duration-300 hover:shadow-xl will-change-transform"
+          className="fixed bottom-4 sm:bottom-8 right-4 sm:right-8 p-2 sm:p-3 rounded-full bg-primary text-white shadow-lg z-40 hover:bg-primary/90 transition-all duration-300 hover:shadow-xl will-change-transform"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
@@ -233,8 +233,8 @@ export default function Home() {
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
+            width="20"
+            height="20"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"

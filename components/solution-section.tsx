@@ -48,7 +48,7 @@ export default function SolutionSection() {
   }
 
   return (
-    <section className="py-20" id="solution" ref={sectionRef}>
+    <section className="py-12 sm:py-20" id="solution" ref={sectionRef}>
       <div className="container px-4 md:px-6">
         <motion.div
           className="flex flex-col items-center text-center max-w-3xl mx-auto"
@@ -57,35 +57,38 @@ export default function SolutionSection() {
           variants={containerVariants}
         >
           <motion.div
-            className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground mb-6"
+            className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground mb-4 sm:mb-6"
             variants={itemVariants}
           >
             A Solução
           </motion.div>
           <motion.h2
-            className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-6"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter mb-4 sm:mb-6"
             variants={itemVariants}
           >
             Em poucos dias, você pode estruturar um processo completo, automatizado e previsível de atendimento, retorno
             e crescimento
           </motion.h2>
-          <motion.p className="text-xl text-muted-foreground mb-8" variants={itemVariants}>
+          <motion.p
+            className="text-base sm:text-lg md:text-xl text-muted-foreground mb-6 sm:mb-8"
+            variants={itemVariants}
+          >
             Mesmo sem agência, sem especialistas, equipe ou tempo sobrando.
           </motion.p>
 
           <motion.div
-            className="w-full p-6 bg-card rounded-xl border shadow-lg mb-10 transform-gpu hover:shadow-xl transition-all duration-500"
+            className="w-full p-4 sm:p-6 bg-card rounded-xl border shadow-lg mb-6 sm:mb-10 transform-gpu hover:shadow-xl transition-all duration-500"
             variants={cardVariants}
           >
-            <p className="text-lg font-medium mb-4">
+            <p className="text-base sm:text-lg font-medium mb-3 sm:mb-4">
               A Homio não é só um sistema: é a estrutura que faltava pra sua clínica funcionar como processo, ritmo e
               controle.
             </p>
-            <p className="text-muted-foreground mb-6">
+            <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6">
               Sim, usando a Homio, você pode, de forma prática e descomplicada, ter processos comerciais na sua clínica,
               tendo a sua gestão de marketing e vendas na palma da sua mão.
             </p>
-            <ul className="text-left space-y-2 mb-6">
+            <ul className="text-left space-y-1 sm:space-y-2 mb-4 sm:mb-6">
               {[
                 "Organiza leads",
                 "Agenda e confirma automaticamente consultas",
@@ -96,7 +99,7 @@ export default function SolutionSection() {
               ].map((item, index) => (
                 <motion.li
                   key={index}
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-2 text-sm sm:text-base"
                   initial={{ opacity: 0, x: -20 }}
                   animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
                   transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
@@ -110,11 +113,11 @@ export default function SolutionSection() {
 
           <motion.div variants={itemVariants}>
             <Button
-              className="group transition-all duration-300 hover:shadow-lg hover:translate-y-[-2px]"
+              className="group transition-all duration-300 hover:shadow-lg hover:translate-y-[-2px] w-full sm:w-auto"
               size="lg"
               onClick={() => scrollToElement("agendar", 80)}
             >
-              <span>Quero organizar minha operação com mais leveza</span>
+              <span className="text-sm sm:text-base">Quero organizar minha operação com mais leveza</span>
               <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Button>
           </motion.div>

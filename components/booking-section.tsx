@@ -84,16 +84,13 @@ export default function BookingSection() {
         </motion.div>
 
         <motion.div
-          className="max-w-4xl mx-auto bg-card rounded-xl border shadow-lg overflow-hidden transform-gpu hover:shadow-xl transition-all duration-500"
+          className="max-w-4xl mx-auto bg-card rounded-xl overflow-hidden transform-gpu transition-all duration-500"
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
         >
-          <div className="p-6 md:p-8">
+          <div className="p-0">
             <div className="relative">
-              {/* Gradient overlay at the top of the iframe */}
-              <div className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-background to-transparent z-10 pointer-events-none rounded-t-lg"></div>
-
               <iframe
                 ref={iframeRef}
                 src="https://stage.homio.com.br/widget/booking/Czv7PDibHq7zFgCIez9b"
@@ -103,9 +100,6 @@ export default function BookingSection() {
                 title="Agendar demonstração Homio"
                 className="rounded-lg"
               ></iframe>
-
-              {/* Gradient overlay at the bottom of the iframe */}
-              <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none rounded-b-lg"></div>
             </div>
           </div>
         </motion.div>
