@@ -125,7 +125,7 @@ const Navbar = memo(function Navbar() {
             className="will-change-transform"
           >
             <Button
-              className="hidden md:flex items-center gap-2 bg-primary hover:bg-primary/90 text-white rounded-xl h-auto transition-all duration-300 hover:shadow-md hover:translate-y-[-2px] text-sm"
+              className="hidden md:flex items-center gap-2 bg-gradient-to-r from-primary to-[#5417b2] hover:opacity-90 text-white rounded-xl h-auto transition-all duration-300 hover:shadow-md hover:translate-y-[-2px] text-sm px-4 py-2"
               onClick={(e) => {
                 e.preventDefault()
                 scrollToElement("agendar", 80)
@@ -163,7 +163,7 @@ const Navbar = memo(function Navbar() {
                 <div className="flex items-center gap-4 mt-4">
                   <ThemeToggle />
                   <Button
-                    className="w-full flex items-center gap-2 bg-primary hover:bg-primary/90 text-white rounded-xl h-auto"
+                    className="w-full flex items-center gap-2 bg-gradient-to-r from-primary to-[#5417b2] hover:opacity-90 text-white rounded-xl h-auto px-4 py-2"
                     onClick={(e) => {
                       e.preventDefault()
                       scrollToElement("agendar", 80)

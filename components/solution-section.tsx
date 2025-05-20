@@ -113,7 +113,7 @@ export default function SolutionSection() {
 
           <motion.div variants={itemVariants}>
             <Button
-              className="group transition-all duration-300 hover:shadow-lg hover:translate-y-[-2px] w-full sm:w-auto"
+              className="group transition-all duration-300 hover:shadow-lg hover:translate-y-[-2px] w-full sm:w-auto bg-gradient-to-r from-primary to-[#5417b2] text-white px-6 py-3 rounded-md"
               size="lg"
               onClick={() => scrollToElement("agendar", 80)}
             >

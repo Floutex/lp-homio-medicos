@@ -214,7 +214,7 @@ export default function DifferentiationSection() {
                 </p>
                 <Button
                   onClick={handleScrollToBooking}
-                  className="mt-2 bg-primary hover:bg-primary/90 text-white px-4 sm:px-6 py-2 rounded-md flex items-center gap-2 mx-auto w-full sm:w-auto justify-center"
+                  className="mt-2 bg-gradient-to-r from-primary to-[#5417b2] hover:opacity-90 text-white px-6 py-3 rounded-md flex items-center gap-2 mx-auto w-full sm:w-auto justify-center"
                 >
                   <span className="text-sm sm:text-base">
                     <span className="hidden sm:inline">Quero organizar minha operação com mais leveza</span>

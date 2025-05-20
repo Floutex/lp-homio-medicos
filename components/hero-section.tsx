@@ -111,7 +111,7 @@ const HeroSection = memo(function HeroSection() {
           </motion.div>
 
           <motion.h1
-            className="font-bold tracking-tighter mb-4 sm:mb-6 text-2xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl max-w-5xl"
+            className="font-bold tracking-tighter mb-4 sm:mb-6 text-xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl max-w-5xl"
             variants={itemVariants}
           >
             A maioria dos médicos confia que agenda cheia é sinal de que tudo está indo bem, até perceber o que poucos
@@ -167,7 +167,7 @@ const HeroSection = memo(function HeroSection() {
 
           <motion.div variants={itemVariants} className="will-change-transform">
             <Button
-              className="group transition-all duration-300 hover:shadow-lg hover:translate-y-[-2px] w-full sm:w-auto"
+              className="group transition-all duration-300 hover:shadow-lg hover:translate-y-[-2px] w-full sm:w-auto bg-gradient-to-r from-primary to-[#5417b2] text-white px-6 py-3 rounded-md"
               size={isSmallScreen ? "default" : "lg"}
               onClick={() => scrollToElement("agendar", 80)}
             >
