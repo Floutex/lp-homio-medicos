@@ -73,16 +73,6 @@ export default function DifferentiationSection() {
                   negócio.
                 </span>
               </motion.p>
-              <motion.div
-                className="flex items-center gap-2 p-4 bg-primary/10 rounded-lg border border-primary/20 transform-gpu hover:shadow-md transition-all duration-300"
-                variants={itemVariants}
-              >
-                <CheckCircle2 className="h-5 w-5 text-primary shrink-0" />
-                <p className="text-sm font-medium">
-                  Centenas de médicos já sabem disto: a Homio foi feita pra clínicas pequenas e médias, e funciona com
-                  você no controle.
-                </p>
-              </motion.div>
             </motion.div>
           </motion.div>
           <motion.div
@@ -90,7 +80,7 @@ export default function DifferentiationSection() {
             variants={cardVariants}
           >
             <div className="p-6">
-              <h4 className="text-xl font-medium mb-5">Outros sistemas que tentam fazer parte disso são:</h4>
+              <h4 className="text-xl font-medium mb-5">Erros de outros sistemas:</h4>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
                 {[
@@ -123,16 +113,16 @@ export default function DifferentiationSection() {
                   </motion.div>
                 ))}
               </div>
-
               <motion.div
-                className="p-5 bg-gradient-to-br from-primary/5 to-primary/20 rounded-lg"
+                className="flex items-center gap-2 p-4 bg-primary/10 rounded-lg border border-primary/20 transform-gpu hover:shadow-md transition-all duration-300 mt-6"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.7, delay: 0.8 }}
               >
-                <p className="text-base">
-                  <span className="font-medium">Existem outros sistemas que até tentam fazer parte disso</span>, porém
-                  são caros demais, complexos, incompletos e exigem uma equipe inteira pra rodar.
+                <CheckCircle2 className="h-5 w-5 text-primary shrink-0" />
+                <p className="text-sm font-medium">
+                  Centenas de médicos já sabem disto: a Homio foi feita pra clínicas pequenas e médias, e funciona com
+                  você no controle.
                 </p>
               </motion.div>
             </div>
