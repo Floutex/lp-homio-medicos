@@ -2,7 +2,7 @@
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
-import { CheckCircle2, Zap } from "lucide-react"
+import { CheckCircle2, Lightbulb, Zap } from "lucide-react"
 
 export default function ReflectionSection() {
   const sectionRef = useRef(null)
@@ -63,24 +63,28 @@ export default function ReflectionSection() {
             <motion.h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl" variants={itemVariants}>
               Quem usa Homio não apenas organiza a clínica.
             </motion.h2>
-            <motion.div className="space-y-4 text-muted-foreground" variants={containerVariants}>
-              <motion.p variants={itemVariants}>
-                <span className="text-foreground font-medium">
-                  Porque sim, com a Homio você pode ser gestor do seu negócio,
-                </span>{" "}
-                sem que isso seja massacrante ou tome tempo do que você realmente ama: atender seus pacientes.
-              </motion.p>
 
-              <motion.div
-                className="flex items-center gap-2 p-4 bg-primary/10 rounded-lg border border-primary/20 transform-gpu hover:shadow-md transition-all duration-300"
-                variants={itemVariants}
-              >
-                <Zap className="h-5 w-5 text-primary" />
-                <p className="text-sm font-medium">
-                  A Homio já vem pronta pra funcionar no que realmente importa: comunicação clara, automações úteis e
-                  acompanhamento simples.
-                </p>
-              </motion.div>
+            <motion.div variants={itemVariants} className="mt-6">
+              <ul className="space-y-4 pl-1">
+                {[
+                  "Assume o controle.",
+                  "Ganha previsibilidade.",
+                  "E sai do padrão silencioso que ainda domina a maioria.",
+                ].map((text, index) => (
+                  <motion.li
+                    key={index}
+                    className="flex items-start gap-3"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                    transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                  >
+                    <div className="rounded-full bg-primary/10 p-1.5 mt-0.5">
+                      <CheckCircle2 className="h-4 w-4 text-primary" />
+                    </div>
+                    <span className="text-lg">{text}</span>
+                  </motion.li>
+                ))}
+              </ul>
             </motion.div>
           </motion.div>
 
@@ -89,65 +93,50 @@ export default function ReflectionSection() {
             variants={cardVariants}
           >
             <div className="p-6">
-              <h3 className="text-xl font-bold mb-4">O que a transformação significa para você:</h3>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
-                {[
-                  "Assume o controle.",
-                  "Ganha previsibilidade.",
-                  "E sai do padrão silencioso que ainda domina a maioria.",
-                ].map((text, index) => (
-                  <motion.div
-                    key={index}
-                    className="bg-primary/10 rounded-lg p-4 border border-primary/20 text-center font-medium"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                  >
-                    {text}
-                  </motion.div>
-                ))}
-              </div>
-
-              <ul className="space-y-4">
-                {[
-                  {
-                    text: "Você não precisa entender de marketing",
-                    icon: <CheckCircle2 className="h-4 w-4 text-primary" />,
-                  },
-                  {
-                    text: "Você não precisa de uma equipe inteira",
-                    icon: <CheckCircle2 className="h-4 w-4 text-primary" />,
-                  },
-                  {
-                    text: "Você mantém o controle de tudo",
-                    icon: <CheckCircle2 className="h-4 w-4 text-primary" />,
-                  },
-                ].map((item, index) => (
-                  <motion.li
-                    key={index}
-                    className="flex items-start gap-3"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                    transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
-                  >
-                    <div className="rounded-full bg-primary/10 p-1.5 mt-0.5">{item.icon}</div>
-                    <span>{item.text}</span>
-                  </motion.li>
-                ))}
-              </ul>
+              <motion.p variants={itemVariants} className="text-muted-foreground mb-6">
+                <span className="text-foreground font-medium">
+                  Porque sim, com a Homio você pode ser gestor do seu negócio,
+                </span>{" "}
+                sem que isso seja massacrante ou tome tempo do que você realmente ama: atender seus pacientes.
+              </motion.p>
 
               <motion.div
-                className="mt-8 p-5 bg-gradient-to-br from-primary/5 to-primary/20 rounded-lg"
+                className="p-5 bg-gradient-to-br from-primary/5 to-primary/20 rounded-lg border border-primary/10"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.7, delay: 0.8 }}
               >
-                <p className="text-lg font-medium mb-2">E se você estiver se perguntando:</p>
-                <p className="italic text-lg mb-3">"mas eu não entendo nada de marketing…"</p>
-                <p>
-                  saiba que você <span className="font-bold">não precisa</span>.
-                </p>
+                <div className="flex items-start gap-3">
+                  <div className="rounded-full bg-primary/20 p-1.5 mt-1 flex-shrink-0">
+                    <Lightbulb className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <p>
+                      E se você estiver se perguntando:{" "}
+                      <span className="italic">"mas eu não entendo nada de marketing…"</span>, saiba que você{" "}
+                      <span className="font-bold">não precisa</span>.
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="p-5 bg-gradient-to-br from-primary/5 to-primary/20 rounded-lg border border-primary/10 mt-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.7, delay: 1.0 }}
+              >
+                <div className="flex items-start gap-3">
+                  <div className="rounded-full bg-primary/20 p-1.5 mt-1 flex-shrink-0">
+                    <Zap className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <p>
+                      A Homio já vem pronta pra funcionar no que realmente importa: comunicação clara, automações úteis
+                      e acompanhamento simples.
+                    </p>
+                  </div>
+                </div>
               </motion.div>
             </div>
           </motion.div>
