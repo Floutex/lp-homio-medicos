@@ -18,7 +18,7 @@ export default function OfferSection() {
     "Suporte humano e rápido, direto no WhatsApp",
     "Atualizações contínuas — sem custo extra",
     "Garantia de satisfação: 7 dias para testar sem risco",
-    "Acesso ao nosso canal de estratégias práticas para clínicas",
+    "Sem fidelidade, cancele quando quiser.",
   ]
 
   const containerVariants = {
@@ -127,8 +127,8 @@ export default function OfferSection() {
           <div className="p-6 sm:p-8 md:p-10">
             <ul className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2">
               {benefits.map((benefit, index) => (
-                <motion.li key={index} custom={index} variants={itemVariants} className="flex items-start gap-2 group">
-                  <div className="rounded-full bg-primary/10 p-1 mt-1 group-hover:bg-[#0387fe]/20 transition-colors duration-300 flex-shrink-0">
+                <motion.li key={index} custom={index} variants={itemVariants} className="flex items-center gap-2 group">
+                  <div className="rounded-full bg-primary/10 p-1 group-hover:bg-[#0387fe]/20 transition-colors duration-300 flex-shrink-0">
                     <Check className="h-3 w-3 sm:h-4 sm:w-4 text-primary group-hover:text-[#0387fe] transition-colors duration-300" />
                   </div>
                   <span className="text-xs sm:text-sm group-hover:text-[#0387fe] transition-colors duration-300">
@@ -144,9 +144,11 @@ export default function OfferSection() {
               animate={isInView ? { opacity: 1 } : { opacity: 0 }}
               transition={{ duration: 0.7, delay: 0.8 }}
             >
-              <p className="text-base sm:text-lg font-medium mb-2">E tudo isso com o menor custo do mercado:</p>
+              <p className="text-base sm:text-lg font-medium mb-2">
+                E tudo isso com a oferta mais vantajosa do mercado:
+              </p>
               <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6">
-                Você não paga por usuário, não precisa de consultor, e não leva funções pela metade.
+                Você não paga por contato, não precisa de consultor, e não leva funções pela metade.
               </p>
               <p className="text-xs sm:text-sm text-muted-foreground mb-6 sm:mb-8">
                 Não tem tempo agora para implantar? A Homio foi feita para quem tem pouco tempo e muita demanda. Com
