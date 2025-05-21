@@ -90,7 +90,6 @@ export default function JourneySection() {
             variants={cardVariants}
           >
             <div className="p-6">
-              <h3 className="text-xl font-bold mb-4">Sinais de que você precisa de um processo estruturado:</h3>
               <ul className="space-y-4">
                 {[
                   {

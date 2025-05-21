@@ -1,11 +1,8 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
-import { scrollToElement } from "@/lib/scroll-utils"
 
 export default function SolutionSection() {
   const sectionRef = useRef(null)
@@ -73,7 +70,7 @@ export default function SolutionSection() {
             className="text-base sm:text-lg md:text-xl text-muted-foreground mb-6 sm:mb-8"
             variants={itemVariants}
           >
-            Mesmo sem agência, sem especialistas, equipe ou tempo sobrando.
+            Mesmo sem agência, sem especialistas, equipe ou sem tempo sobrando.
           </motion.p>
 
           <motion.div
@@ -81,12 +78,12 @@ export default function SolutionSection() {
             variants={cardVariants}
           >
             <p className="text-base sm:text-lg font-medium mb-3 sm:mb-4">
-              A Homio não é só um sistema: é a estrutura que faltava pra sua clínica funcionar como processo, ritmo e
+              A Homio não é só um sistema: é a estrutura que faltava pra sua clínica funcionar com processo, ritmo e
               controle.
             </p>
             <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6">
               Sim, usando a Homio, você pode, de forma prática e descomplicada, ter processos comerciais na sua clínica,
-              tendo a sua gestão de marketing e vendas na palma da sua mão.
+              tendo a sua gestão de marketing e vendas nas palmas da suas mãos.
             </p>
             <ul className="text-left space-y-1 sm:space-y-2 mb-4 sm:mb-6">
               {[
@@ -117,20 +114,6 @@ export default function SolutionSection() {
             >
               Te mostra onde estão os gargalos, sem precisar de consultor, agência ou programador.
             </motion.h3>
-          </motion.div>
-
-          <motion.div variants={itemVariants}>
-            <Button
-              className="group transition-all duration-300 hover:shadow-lg hover:translate-y-[-2px] w-full sm:w-auto bg-gradient-to-r from-primary to-[#5417b2] text-white px-6 py-3 rounded-md"
-              size="lg"
-              onClick={() => scrollToElement("agendar", 80)}
-            >
-              <span className="text-sm sm:text-base">
-                <span className="hidden sm:inline">Quero organizar minha operação com mais leveza</span>
-                <span className="sm:hidden">Organizar minha clínica</span>
-              </span>
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </Button>
           </motion.div>
         </motion.div>
       </div>

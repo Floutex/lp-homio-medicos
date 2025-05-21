@@ -156,15 +156,15 @@ export default function OfferSection() {
               {/* Novo botão CTA */}
               <motion.div className="flex justify-center" variants={buttonVariants}>
                 <Button
-                  className="group transition-all duration-300 hover:shadow-lg hover:translate-y-[-2px] w-full sm:w-auto text-sm sm:text-base bg-gradient-to-r from-primary to-[#5417b2] text-white px-6 py-3 rounded-md"
+                  className="group transition-all duration-300 hover:shadow-lg hover:translate-y-[-2px] w-full sm:w-auto text-base sm:text-lg bg-gradient-to-r from-primary to-[#5417b2] text-white px-8 py-4 rounded-md"
                   size="lg"
                   onClick={() => scrollToElement("agendar", 80)}
                 >
                   <span>
-                    <span className="hidden sm:inline">Quero conhecer a estrutura que pode destravar minha rotina</span>
-                    <span className="sm:hidden">Conhecer a Homio</span>
+                    <span className="hidden sm:inline">Eu quero conhecer o Sistema Homio</span>
+                    <span className="sm:hidden">Conhecer o Sistema Homio</span>
                   </span>
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                 </Button>
               </motion.div>
             </motion.div>

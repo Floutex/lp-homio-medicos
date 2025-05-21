@@ -11,22 +11,22 @@ export default function FaqSection() {
 
   const faqs = [
     {
-      question: "Mas um sistema assim deve ser caro...",
+      question: "Será que o sistema é caro?",
       answer:
         "A Homio tem o melhor custo entre os sistemas médicos do mercado. Nossos usuários podem te garantir: não existe outro sistema que condense tantas funcionalidades como a Homio.",
     },
     {
-      question: "É muita coisa para aprender.",
+      question: "É muita coisa para aprender?",
       answer:
         "A interface é simples. O suporte é direto. E o que você precisar, a gente te mostra. Você não precisa de agência, programador ou consultor para usar a Homio.",
     },
     {
-      question: "Mas eu já tenho agenda cheia.",
+      question: "E se eu já tenho agenda cheia?",
       answer:
         "E isso é ótimo. A Homio não substitui sua agenda, ela organiza tudo ao redor dela, garantindo retorno, reativação e controle.",
     },
     {
-      question: "Não acho que preciso de um sistema assim.",
+      question: "E se eu achar que não preciso de um sistema assim?",
       answer:
         "Se você sente que sua clínica depende demais de você, que os retornos não acontecem como deveriam, e que sempre tem algo fora do lugar, então o que você mais precisa é justamente de um sistema para organizar tudo isso.",
     },
@@ -36,7 +36,7 @@ export default function FaqSection() {
         "Você pode testar com tranquilidade. São 7 dias de acesso completo com suporte dedicado. Se não fizer sentido, pode cancelar sem burocracia.",
     },
     {
-      question: "Já uso um sistema para agenda ou prontuário.",
+      question: "E se eu já usar um sistema para agenda ou prontuário?",
       answer:
         "A Homio não é só um sistema de agendamento ou de prontuários, a Homio foca onde esses outros sistemas não chegam: relacionamento com o paciente entre as consultas, no marketing da sua clínica e na gestão do seu negócio.",
     },

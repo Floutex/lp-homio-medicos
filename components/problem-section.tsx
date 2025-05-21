@@ -75,8 +75,8 @@ export default function ProblemSection() {
 
               <motion.div className="space-y-4 mt-4" variants={itemVariants}>
                 <p className="text-sm sm:text-base">
-                  Talvez você nunca tenha parado pra pensar, mas a clínica depende demais de uma pessoa só — de você, de
-                  uma secretária.
+                  Talvez você nunca tenha parado pra pensar, mas a clínica depende demais de uma pessoa só... de você,
+                  de uma secretária.
                 </p>
                 <p className="text-sm sm:text-base">
                   Você precisa constantemente atrair novos agendamentos, e sente o quanto os plantões, parcerias e
@@ -118,8 +118,8 @@ export default function ProblemSection() {
                   <div>
                     <p className="font-medium text-lg mb-2">Mas e se o real desafio estiver em outro lugar?</p>
                     <p className="text-muted-foreground">
-                      E se o verdadeiro gargalo estiver num processo comercial que nem chegou a ser estruturado porque
-                      ninguém nunca te apresentou isso como parte essencial da clínica?
+                      E se o verdadeiro gargalo estiver num <strong>processo comercial</strong> que nem chegou a ser
+                      estruturado porque ninguém nunca te apresentou isso como parte essencial da clínica?
                     </p>
                   </div>
                 </div>

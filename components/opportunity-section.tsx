@@ -70,16 +70,14 @@ export default function OpportunitySection() {
               Oportunidades
             </motion.div>
             <motion.h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl" variants={itemVariants}>
-              Transforme desafios em resultados
+              Pensa comigo:
             </motion.h2>
             <motion.div className="space-y-4 text-muted-foreground" variants={containerVariants}>
               <motion.p variants={itemVariants}>
                 <span className="text-foreground font-medium">
-                  Pensa comigo: cada paciente que não volta depois da primeira consulta…
+                  Cada paciente que não volta depois da primeira consulta… Cada horário vazio na agenda que poderia ter sido ocupado… Cada lead que pediu informação e nunca foi respondido…
                 </span>{" "}
-                Cada horário vazio na agenda que poderia ter sido ocupado…
               </motion.p>
-              <motion.p variants={itemVariants}>Cada lead que pediu informação e nunca foi respondido…</motion.p>
               <motion.div
                 className="flex items-center gap-2 p-4 bg-primary/10 rounded-lg border border-primary/20 transform-gpu hover:shadow-md transition-all duration-300"
                 variants={itemVariants}
@@ -138,7 +136,7 @@ export default function OpportunitySection() {
                   onClick={handleScrollToBooking}
                   className="w-full bg-gradient-to-r from-primary to-[#5417b2] hover:opacity-90 text-white px-6 py-3 rounded-md flex items-center gap-2 justify-center"
                 >
-                  <span>Quero organizar minha operação com mais leveza</span>
+                  <span>Quero começar agora o Sistema Homio</span>
                   <ArrowDown className="h-4 w-4" />
                 </Button>
               </motion.div>
