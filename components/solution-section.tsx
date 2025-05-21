@@ -94,8 +94,7 @@ export default function SolutionSection() {
                 "Agenda e confirma automaticamente consultas",
                 "Envia mensagens automáticas para lembretes de consultas",
                 "Reativa pacientes que não voltaram",
-                "Posta seus conteúdos nas suas redes sociais",
-                "Te mostra onde estão os gargalos, sem precisar de consultor",
+                "Posta seus conteúdos nas suas redes sociais... E muito mais.",
               ].map((item, index) => (
                 <motion.li
                   key={index}
@@ -109,6 +108,15 @@ export default function SolutionSection() {
                 </motion.li>
               ))}
             </ul>
+
+            <motion.h3
+              className="text-lg sm:text-xl font-medium text-center mt-8 mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+            >
+              Te mostra onde estão os gargalos, sem precisar de consultor, agência ou programador.
+            </motion.h3>
           </motion.div>
 
           <motion.div variants={itemVariants}>

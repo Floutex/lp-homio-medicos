@@ -1,13 +1,9 @@
 "use client"
 
-import type React from "react"
-
-import { Calendar, DollarSign, Users, X, ArrowDown } from "lucide-react"
+import { Calendar, DollarSign, Users, X, UserCircle2 } from "lucide-react"
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
-import { Button } from "@/components/ui/button"
-import { scrollToElement } from "@/lib/scroll-utils"
 
 export default function DifferentiationSection() {
   const sectionRef = useRef(null)
@@ -49,180 +45,140 @@ export default function DifferentiationSection() {
     },
   }
 
-  const handleScrollToBooking = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault()
-    scrollToElement("booking")
-  }
-
   return (
-    <section className="py-12 sm:py-20 bg-muted/30 dark:bg-muted/5" id="differentiation" ref={sectionRef}>
+    <section className="py-16 sm:py-24 bg-muted/30 dark:bg-muted/5" id="differentiation" ref={sectionRef}>
       <div className="container px-4 md:px-6">
         <motion.div
-          className="flex flex-col items-center text-center max-w-3xl mx-auto"
+          className="max-w-3xl mx-auto"
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={containerVariants}
         >
-          <motion.div
-            className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground mb-4 sm:mb-6"
-            variants={itemVariants}
-          >
-            Diferencial
-          </motion.div>
-
-          <motion.div
-            className="w-full p-4 sm:p-6 bg-card rounded-xl border shadow-lg mb-6 sm:mb-10 transform-gpu hover:shadow-xl transition-all duration-500"
-            variants={cardVariants}
-          >
-            <p className="text-base sm:text-lg font-medium italic mb-4 sm:mb-6">
-              "Aí você pode estar pensando: Eu já uso um sistema pra agenda ou prontuário."
-            </p>
-
-            <div className="flex flex-col md:flex-row gap-4 sm:gap-6 mb-6 sm:mb-8">
-              <div className="flex-1 flex flex-col items-center p-3 sm:p-4 bg-muted/50 rounded-lg">
-                <Calendar className="h-8 w-8 sm:h-10 sm:w-10 text-muted-foreground mb-2 sm:mb-3" />
-                <h3 className="text-base sm:text-lg font-medium mb-1 sm:mb-2">Sistemas comuns</h3>
-                <p className="text-xs sm:text-sm text-muted-foreground">Focam apenas em agendamento ou prontuários</p>
-              </div>
-              <div className="flex-1 flex flex-col items-center p-3 sm:p-4 bg-primary/10 rounded-lg">
-                <motion.div
-                  className="rounded-full bg-primary/20 p-1 sm:p-2"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="h-5 w-5 sm:h-6 sm:w-6 text-primary"
-                  >
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                    <circle cx="9" cy="7" r="4" />
-                    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                  </svg>
-                </motion.div>
-                <h3 className="text-base sm:text-lg font-medium mb-1 sm:mb-2">Homio</h3>
-                <p className="text-xs sm:text-sm">Foca no relacionamento com o paciente entre as consultas</p>
-              </div>
-            </div>
-
-            <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6">
-              A Homio não é só um sistema de agendamento ou de prontuários, a Homio foca onde esses outros sistemas não
-              chegam: relacionamento com o paciente entre as consultas, no marketing da sua clínica e na gestão do seu
-              negócio.
-            </p>
-
-            <div className="bg-muted/30 p-3 sm:p-5 rounded-lg mb-4 sm:mb-6">
-              <h3 className="text-base sm:text-lg font-medium mb-2 sm:mb-4">
-                Outros sistemas que tentam fazer isso são:
-              </h3>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
-                {[
-                  { text: "Caros demais", icon: <DollarSign className="h-4 w-4 text-red-500" /> },
-                  { text: "Complexos", icon: <X className="h-4 w-4 text-red-500" /> },
-                  { text: "Incompletos", icon: <X className="h-4 w-4 text-red-500" /> },
-                  { text: "Exigem equipe inteira", icon: <Users className="h-4 w-4 text-red-500" /> },
-                ].map((item, index) => (
-                  <motion.li
-                    key={index}
-                    className="flex items-center gap-2"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                    transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                  >
-                    <div className="rounded-full bg-red-100 dark:bg-red-900/20 p-1">{item.icon}</div>
-                    <span className="text-sm sm:text-base">{item.text}</span>
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
-
+          <div className="text-center mb-10">
             <motion.div
-              className="p-3 sm:p-4 border-l-4 border-primary bg-primary/5 rounded-r-lg mb-6 sm:mb-8"
-              initial={{ opacity: 0, x: -20 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-              transition={{ duration: 0.6, delay: 0.9 }}
+              className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground mb-4"
+              variants={itemVariants}
             >
-              <p className="font-medium text-sm sm:text-base">
-                Centenas de médicos já sabem disto: a Homio foi feita pra clínicas pequenas e médias, e funciona com
-                você no controle.
-              </p>
+              Diferencial
+            </motion.div>
+            <motion.h2
+              className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4"
+              variants={itemVariants}
+            >
+              Entenda o que nos diferencia
+            </motion.h2>
+            <motion.p className="text-muted-foreground max-w-2xl mx-auto" variants={itemVariants}>
+              "Aí você pode estar pensando: Eu já uso um sistema pra agenda ou prontuário."
+            </motion.p>
+          </div>
+
+          <motion.div className="space-y-8" variants={containerVariants}>
+            {/* Step 1 */}
+            <motion.div className="relative pl-8 md:pl-0" variants={cardVariants}>
+              <div className="flex flex-col md:flex-row gap-6 items-start">
+                <div className="hidden md:flex items-center justify-center w-16 h-16 rounded-full bg-primary/20 text-primary font-bold text-xl shrink-0">
+                  1
+                </div>
+                <div className="md:hidden absolute left-0 top-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/20 text-primary font-bold text-sm">
+                  1
+                </div>
+                <div className="flex-1 space-y-4">
+                  <h3 className="text-xl font-bold">Sistemas comuns vs. Homio</h3>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="bg-muted/50 p-4 rounded-lg">
+                      <div className="flex items-center gap-3 mb-3">
+                        <Calendar className="h-6 w-6 text-muted-foreground" />
+                        <h4 className="font-medium">Sistemas comuns</h4>
+                      </div>
+                      <p className="text-sm text-muted-foreground">Focam apenas em agendamento ou prontuários</p>
+                    </div>
+
+                    <div className="bg-primary/10 p-4 rounded-lg">
+                      <div className="flex items-center gap-3 mb-3">
+                        <UserCircle2 className="h-6 w-6 text-primary" />
+                        <h4 className="font-medium">Homio</h4>
+                      </div>
+                      <p className="text-sm">Foca no relacionamento com o paciente entre as consultas</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </motion.div>
 
-            {/* Novo conteúdo adicionado */}
-            <motion.div
-              className="mt-6 sm:mt-10 space-y-4 sm:space-y-6 text-left"
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-              transition={{ duration: 0.8, delay: 1.1 }}
-            >
-              <h3 className="text-lg sm:text-xl font-medium mb-2 sm:mb-4">Pensa comigo:</h3>
-              <ul className="space-y-2 sm:space-y-3">
-                {[
-                  "Cada paciente que não volta depois da primeira consulta…",
-                  "Cada horário vazio na agenda que poderia ter sido ocupado…",
-                  "Cada lead que pediu informação e nunca foi respondido…",
-                ].map((item, index) => (
-                  <motion.li
-                    key={index}
-                    className="pl-3 sm:pl-4 border-l-2 border-primary/30 text-sm sm:text-base"
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
-                    transition={{ duration: 0.5, delay: 1.2 + index * 0.15 }}
-                  >
-                    {item}
-                  </motion.li>
-                ))}
-              </ul>
+            {/* Step 2 */}
+            <motion.div className="relative pl-8 md:pl-0" variants={cardVariants}>
+              <div className="flex flex-col md:flex-row gap-6 items-start">
+                <div className="hidden md:flex items-center justify-center w-16 h-16 rounded-full bg-primary/20 text-primary font-bold text-xl shrink-0">
+                  2
+                </div>
+                <div className="md:hidden absolute left-0 top-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/20 text-primary font-bold text-sm">
+                  2
+                </div>
+                <div className="flex-1 space-y-4">
+                  <h3 className="text-xl font-bold">Além do básico</h3>
 
-              <motion.div
-                className="p-3 sm:p-5 bg-gradient-to-r from-primary/10 to-primary/5 rounded-lg my-4 sm:my-6"
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.6, delay: 1.7 }}
-              >
-                <p className="font-medium text-sm sm:text-base">
-                  Tudo isso é energia e oportunidade vazando todos os dias – que você não estava vendo escapar.
-                </p>
-              </motion.div>
+                  <div className="bg-gradient-to-r from-primary/5 to-primary/15 p-5 rounded-lg">
+                    <p className="mb-4">
+                      A Homio não é só um sistema de agendamento ou de prontuários, a Homio foca onde esses outros
+                      sistemas não chegam: relacionamento com o paciente entre as consultas, no marketing da sua clínica
+                      e na gestão do seu negócio.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
 
-              <motion.p
-                className="text-base sm:text-lg"
-                initial={{ opacity: 0 }}
-                animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-                transition={{ duration: 0.6, delay: 1.9 }}
-              >
-                Com a Homio, em poucos dias, você pode criar um processo comercial simples, previsível e automatizado,
-                sem precisar contratar mais gente, sem depender de ninguém, e sem sair da sua zona de domínio.
-              </motion.p>
+            {/* Step 3 */}
+            <motion.div className="relative pl-8 md:pl-0" variants={cardVariants}>
+              <div className="flex flex-col md:flex-row gap-6 items-start">
+                <div className="hidden md:flex items-center justify-center w-16 h-16 rounded-full bg-primary/20 text-primary font-bold text-xl shrink-0">
+                  3
+                </div>
+                <div className="md:hidden absolute left-0 top-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/20 text-primary font-bold text-sm">
+                  3
+                </div>
+                <div className="flex-1 space-y-4">
+                  <h3 className="text-xl font-bold">Problemas com outros sistemas</h3>
 
-              <motion.div
-                className="mt-6 sm:mt-8 text-center"
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.6, delay: 2.1 }}
-              >
-                <p className="text-lg sm:text-xl font-medium mb-3 sm:mb-4">
-                  Já imaginou sua clínica funcionando com menos esforço e mais resultado, com tudo no lugar certo?
-                </p>
-                <Button
-                  onClick={handleScrollToBooking}
-                  className="mt-2 bg-gradient-to-r from-primary to-[#5417b2] hover:opacity-90 text-white px-6 py-3 rounded-md flex items-center gap-2 mx-auto w-full sm:w-auto justify-center"
-                >
-                  <span className="text-sm sm:text-base">
-                    <span className="hidden sm:inline">Quero organizar minha operação com mais leveza</span>
-                    <span className="sm:hidden">Organizar minha clínica</span>
-                  </span>
-                  <ArrowDown className="h-4 w-4" />
-                </Button>
-              </motion.div>
+                  <div className="bg-muted/30 p-5 rounded-lg">
+                    <h4 className="font-medium mb-3">Outros sistemas que tentam fazer isso são:</h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {[
+                        { text: "Caros demais", icon: <DollarSign className="h-4 w-4 text-red-500" /> },
+                        { text: "Complexos", icon: <X className="h-4 w-4 text-red-500" /> },
+                        { text: "Incompletos", icon: <X className="h-4 w-4 text-red-500" /> },
+                        { text: "Exigem equipe inteira", icon: <Users className="h-4 w-4 text-red-500" /> },
+                      ].map((item, index) => (
+                        <div key={index} className="flex items-center gap-2">
+                          <div className="rounded-full bg-red-100 dark:bg-red-900/20 p-1">{item.icon}</div>
+                          <span className="text-sm sm:text-base">{item.text}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Step 4 */}
+            <motion.div className="relative pl-8 md:pl-0" variants={cardVariants}>
+              <div className="flex flex-col md:flex-row gap-6 items-start">
+                <div className="hidden md:flex items-center justify-center w-16 h-16 rounded-full bg-primary/20 text-primary font-bold text-xl shrink-0">
+                  4
+                </div>
+                <div className="md:hidden absolute left-0 top-0 flex items-center justify-center w-8 h-8 rounded-full bg-primary/20 text-primary font-bold text-sm">
+                  4
+                </div>
+                <div className="flex-1">
+                  <div className="p-5 border-l-4 border-primary bg-primary/5 rounded-r-lg">
+                    <p className="font-medium">
+                      Centenas de médicos já sabem disto: a Homio foi feita pra clínicas pequenas e médias, e funciona
+                      com você no controle.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </motion.div>
         </motion.div>

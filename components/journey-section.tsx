@@ -1,6 +1,6 @@
 "use client"
 
-import { Activity, AlertCircle, CheckCircle2, Gauge, User } from "lucide-react"
+import { Activity, AlertCircle, Gauge, User } from "lucide-react"
 import { motion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
@@ -122,21 +122,10 @@ export default function JourneySection() {
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.7, delay: 0.8 }}
               >
-                <p className="text-lg font-medium mb-3">
-                  Talvez o que você mais precise agora não é de mais pacientes, mas de um processo:
-                </p>
-                <ul className="space-y-2">
-                  {["Simples de implementar", "Visível para toda a equipe", "Sob seu controle direto"].map(
-                    (item, index) => (
-                      <li key={index} className="flex items-center gap-2">
-                        <CheckCircle2 className="h-4 w-4 text-primary" />
-                        <span>{item}</span>
-                      </li>
-                    ),
-                  )}
-                </ul>
-                <p className="mt-4 text-sm italic">
-                  Para que tudo o que já acontece no seu dia a dia finalmente funcione como uma engrenagem bem ajustada.
+                <p className="text-lg font-medium">
+                  Talvez o que você mais precise agora não é de mais pacientes, mas de um processo simples, visível e
+                  sob seu controle, pra que tudo o que já acontece no seu dia a dia finalmente funcione como uma
+                  engrenagem bem ajustada.
                 </p>
               </motion.div>
             </div>

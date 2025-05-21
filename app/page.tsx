@@ -36,12 +36,12 @@ const DifferentiationSection = dynamic(() => import("@/components/differentiatio
   ssr: false,
 })
 
-const ReflectionSection = dynamic(() => import("@/components/reflection-section"), {
+const OpportunitySection = dynamic(() => import("@/components/opportunity-section"), {
   loading: () => <SectionPlaceholder />,
   ssr: false,
 })
 
-const FeaturesSection = dynamic(() => import("@/components/features-section"), {
+const ReflectionSection = dynamic(() => import("@/components/reflection-section"), {
   loading: () => <SectionPlaceholder />,
   ssr: false,
 })
@@ -147,14 +147,14 @@ export default function Home() {
         <DifferentiationSection />
       </LazySection>
 
+      {/* Opportunity Section - lazy load with placeholder */}
+      <LazySection id="opportunity">
+        <OpportunitySection />
+      </LazySection>
+
       {/* Reflection Section - lazy load with placeholder */}
       <LazySection id="transformacao">
         <ReflectionSection />
-      </LazySection>
-
-      {/* Features Section - lazy load with placeholder */}
-      <LazySection id="features">
-        <FeaturesSection />
       </LazySection>
 
       {/* Offer Section - lazy load with placeholder */}

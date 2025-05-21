@@ -154,7 +154,7 @@ const HeroSection = memo(function HeroSection() {
 
               <iframe
                 className={`w-full h-full transition-opacity duration-300 ${videoLoaded ? "opacity-100" : "opacity-0"}`}
-                src="https://www.youtube.com/embed/B5Pql0TNBpA?rel=0&autoplay=1&mute=1"
+                src="https://www.youtube.com/embed/PFWRQWdfBOY?rel=0&autoplay=1&mute=1"
                 title="Sistema Homio | Demonstração"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
